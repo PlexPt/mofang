@@ -1,0 +1,11 @@
+
+server:
+  port: 8000
+
+spring:
+  datasource:
+    url: jdbc:sqlite::resource:db/mofang.db
+#    url: jdbc:sqlite:/Users/Chance/Documents/mofang.db
+    driver-class-name: org.sqlite.JDBC
+    username:
+    password:
