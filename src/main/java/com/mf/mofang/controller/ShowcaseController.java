@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.google.gson.Gson;
 import com.mf.mofang.dao.ShowcaseDao;
 import com.mf.mofang.dao.UserDao;
-import com.mf.mofang.model.UserModel;
+import com.mf.mofang.model.ShowcaseModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,20 +32,19 @@ public class ShowcaseController {
     /**
      * 跳转case案例页面
      */
-    @RequestMapping(value = "/case")
+    @RequestMapping(value = "/showcase")
     public ModelAndView toDemo(ModelAndView mv) {
-        log.info("====>>跳转case页面");
-//        List<CaseModel> caseList = caseDao.selectList(new QueryWrapper<>());
-        List<UserModel> userModelList = userDao.selectList(new QueryWrapper<>());
+        log.info("====>>跳转案例页面");
+        List<ShowcaseModel> caseList = showcaseDao.selectList(new QueryWrapper<>());
 
-        log.info(new Gson().toJson(userModelList));
+        log.info(new Gson().toJson(caseList));
 
         mv.addObject("title", "案例");
-        mv.addObject("content", "  <h1>抱歉，您访问的案例不存在或已被删除</h1>");
-//        mv.addObject("caseList", caseList);
+        mv.addObject("content", "  <h1>下面是案例列表</h1>");
+        mv.addObject("caseList", caseList);
 
         //case.ftl
-        mv.setViewName("case");
+        mv.setViewName("showcase");
 
         return mv;
     }

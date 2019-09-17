@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
 #    url: jdbc:sqlite::resource:db/mofang.db
-    url: jdbc:sqlite:db/mofang.db
+    url: jdbc:sqlite:db/mofang.db  #项目根目录下的db
     driver-class-name: org.sqlite.JDBC
     username:
     password:

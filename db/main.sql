@@ -10,26 +10,10 @@
  Target Server Version : 3021000
  File Encoding         : 65001
 
- Date: 17/09/2019 15:21:04
+ Date: 17/09/2019 17:18:20
 */
 
 PRAGMA foreign_keys = false;
-
--- ----------------------------
--- Table structure for case
--- ----------------------------
-DROP TABLE IF EXISTS "case";
-CREATE TABLE "case" (
-  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  "title" TEXT,
-  "des" TEXT,
-  "content" TEXT,
-  "imgs" TEXT,
-  "remark" TEXT,
-  "remark2" TEXT,
-  "remark3" TEXT,
-  "remark4" TEXT
-);
 
 -- ----------------------------
 -- Table structure for feedback
@@ -50,6 +34,27 @@ CREATE TABLE "feedback" (
 );
 
 -- ----------------------------
+-- Table structure for showcase
+-- ----------------------------
+DROP TABLE IF EXISTS "showcase";
+CREATE TABLE "showcase" (
+  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  "title" TEXT,
+  "des" TEXT,
+  "content" TEXT,
+  "imgs" TEXT,
+  "remark" TEXT,
+  "remark2" TEXT,
+  "remark3" TEXT,
+  "remark4" TEXT
+);
+
+-- ----------------------------
+-- Records of showcase
+-- ----------------------------
+INSERT INTO "showcase" VALUES (1, 'XX公司', '案例简介', '详情', '我是图', NULL, NULL, NULL, NULL);
+
+-- ----------------------------
 -- Table structure for sqlite_sequence
 -- ----------------------------
 DROP TABLE IF EXISTS "sqlite_sequence";
@@ -61,7 +66,7 @@ CREATE TABLE "sqlite_sequence" (
 -- ----------------------------
 -- Records of sqlite_sequence
 -- ----------------------------
-INSERT INTO "sqlite_sequence" VALUES ('case', 0);
+INSERT INTO "sqlite_sequence" VALUES ('showcase', 1);
 INSERT INTO "sqlite_sequence" VALUES ('user', 1);
 INSERT INTO "sqlite_sequence" VALUES ('feedback', 0);
 
@@ -85,15 +90,16 @@ CREATE TABLE "user" (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO "user" VALUES (1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-
--- ----------------------------
--- Auto increment value for case
--- ----------------------------
+INSERT INTO "user" VALUES (1, 'w', 2, 123142, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Auto increment value for feedback
 -- ----------------------------
+
+-- ----------------------------
+-- Auto increment value for showcase
+-- ----------------------------
+UPDATE "sqlite_sequence" SET seq = 1 WHERE name = 'showcase';
 
 -- ----------------------------
 -- Auto increment value for user

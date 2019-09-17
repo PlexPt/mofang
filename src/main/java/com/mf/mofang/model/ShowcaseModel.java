@@ -9,7 +9,7 @@ import lombok.Data;
  * 案例
  */
 @Data
-@TableName("case")
+@TableName("showcase")
 public class ShowcaseModel {
 
     @TableId
