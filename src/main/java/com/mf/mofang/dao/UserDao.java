@@ -1,13 +1,16 @@
 package com.mf.mofang.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.mf.mofang.model.CaseModel;
+import com.mf.mofang.model.UserModel;
+
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
 /**
  * @author pt
  */
 @Mapper
-public interface CaseDao extends BaseMapper<CaseModel> {
+@Component
+public interface UserDao extends BaseMapper<UserModel> {
 
 }

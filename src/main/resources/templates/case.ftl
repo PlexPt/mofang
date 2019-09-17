@@ -14,5 +14,24 @@
 
 <body>
 ${content}
+
+
+<#list caseList as CaseModel>
+    <tr>
+        <td>${CaseModel.title}</td>
+        <td>${CaseModel.imgs}</td>
+        <td>${CaseModel.content}</td>
+        <td>${CaseModel.des}</td>
+        <td>
+            <#if CaseModel.status == 0 >
+                未
+            <#else> 已
+            </#if>
+        </td>
+        <td>
+            <a href="/caseInfo?id=${CaseModel.id}"><i class="glyphicon glyphicon-search"></i></a>
+        </td>
+    </tr>
+</#list>
 </body>
 </html>

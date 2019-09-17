@@ -10,12 +10,17 @@ import lombok.Data;
  */
 @Data
 @TableName("case")
-public class CaseModel {
+public class ShowcaseModel {
 
     @TableId
     private Integer id;
 
     private String title;
+
+    /**
+     * 简介
+     */
+    private String des;
 
     private String content;
 

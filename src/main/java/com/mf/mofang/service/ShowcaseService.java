@@ -5,5 +5,5 @@ package com.mf.mofang.service;
  *
  * @author pt
  */
-public interface CaseService {
+public interface ShowcaseService {
 }
