@@ -6,25 +6,31 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
- * 案例
+ * 用户
  */
 @Data
-@TableName("case")
-public class CaseModel {
+@TableName("user")
+public class UserModel {
 
     @TableId
     private Integer id;
 
-    private String title;
+    /**
+     * 名字
+     */
+    private String name;
 
-    private String content;
-
-    private String imgs;
-
+    /**
+     * 用户名 登录用
+     */
+    private String username;
 
     // 以下备用
+    private String status;
     private String remark;
     private String remark2;
     private String remark3;
     private String remark4;
+
+
 }
