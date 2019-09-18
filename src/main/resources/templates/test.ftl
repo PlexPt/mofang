@@ -75,7 +75,7 @@ macro宏指令：
 使用带参数的宏macro: <@moArgs a=1 b=2 c=3 />
 
 命名空间：
-<#import "otherFreeMarker.ftl" as otherFtl>
+<#import "login.ftl" as otherFtl>
 ${otherFtl.otherName}
 <@otherFtl.addMethod a=10 b=20 />
 <#assign otherName="修改otherFreeMarker.ftl中的otherName变量值"/>
@@ -174,7 +174,7 @@ ${otherFtl.otherName}
 
         <!--引入其它ftl模板文件-->
         <div class="title">引入其它ftl模板文件:</div>
-        <#include "hello-other-html.ftl"/>
+        <#include "login.ftl"/>
 
         <!--宏命令(自定义标签)-->
         <div class="title">宏命令(自定义不带参数的标签)</div>
@@ -190,7 +190,7 @@ ${otherFtl.otherName}
         <@customtagp p0="参数0" p1="参数1" p2="参数2"/>
 
         <!--命名空间-->
-        <#import "hello-other-html.ftl" as other/>
+        <#import "login.ftl" as other/>
         <div style="color: peru;">${other.otherftl}</div>
 
     </div>
