@@ -1,6 +1,7 @@
 package com.mf.mofang.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.mf.mofang.config.Login;
 import com.mf.mofang.dao.UserDao;
 import com.mf.mofang.model.UserModel;
 import lombok.extern.slf4j.Slf4j;
@@ -57,5 +58,14 @@ public class AdminController {
         map.put("code", 0);
 
         return map;
+    }
+
+
+
+    @Login
+    @GetMapping("index")
+    public String index() {
+
+        return "index";
     }
 }
