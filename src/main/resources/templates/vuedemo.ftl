@@ -17,7 +17,7 @@
 <body>
 <div id="app">
     <h1>
-        {{title}}{{title}} {{title}}
+        {{title}}
     </h1>
 
 </div>
@@ -37,7 +37,17 @@
         },
         methods: {},
         beforeMount() {
-
+            axios.get('/user', {
+                params: {
+                    ID: 12345
+                }
+            })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
     });
 
