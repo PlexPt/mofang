@@ -1,103 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta charset="UTF-8">
+    <title>登录后台</title>
 
-    <title>图书管理系统登录页面</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <link href="${ctx!}/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${ctx!}/assets/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="${ctx!}/assets/css/animate.css" rel="stylesheet">
-    <link href="${ctx!}/assets/css/style.css" rel="stylesheet">
-    <link href="${ctx!}/assets/css/login.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <meta http-equiv="refresh" content="0;ie.html" />
-    <![endif]-->
-    <script>
-        if (window.top !== window.self) {
-            window.top.location = window.location;
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 2.6.10-->
+    <script src="/js/vue.js"></script>
+    <script src="/js/axios.js"></script>
+    <script src="/js/store.js"></script>
+
+    <!-- element引入样式 -->
+    <link rel="stylesheet" href="/css/element-ui.css">
+    <!-- element引入组件库 -->
+    <script src="/js/ele.js"></script>
+<#--    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
+<#--对于生产环境，我们推荐链接到一个明确的版本号和构建文件，以避免新版本造成的不可预期的破坏-->
+<#--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>-->
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 10%;
+            position: relative;
+            background: #2d3a4b;
         }
-    </script>
+
+        .dialog {
+            margin-top: 40px;
+            width: 520px;
+            max-width: 100%;
+            height: 100%;
+
+            background: rgba(0, 0, 0, .8);
+        }
+
+        .loginPage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -150px;
+            margin-left: -175px;
+            width: 350px;
+            min-height: 300px;
+            padding: 30px 20px 20px;
+            border-radius: 8px;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+
+        .loginPage p {
+            color: red;
+            text-align: left;
+        }
+
+    </style>
 
 </head>
+<body>
+<div id="app">
 
-<body class="signin">
-<div class="signinpanel">
-    <div class="row">
-        <div class="col-sm-12">
-            <#if message?exists >
-                <div class="alert alert-danger">
-                    ${message!}
-                </div>
-            </#if>
-            <form method="post" action="${ctx!}/admin/login" id="frm">
-                <h3 class="no-margins">图书管理系统</h3>
-                <h4 class="no-margins">登录：</h4>
-                <input type="text" class="form-control uname" name="usercode" id="usercode" placeholder="用户码" />
-                <input type="password" class="form-control pword m-b" name="password" id="password"  placeholder="密码" />
-                <button class="btn btn-success btn-block">登录</button>
-            </form>
-        </div>
-    </div>
-    <div class="signup-footer">
-        <div class="pull-left">
-            &copy;BubblyYi
+    <div class="dialog">
+        <div class="loginPage">
+            <h1>登录</h1>
+            <el-form>
+                <el-form-item label="用户名">
+                    <el-input type="text" id="user" v-model="formName.user"
+                              @blur="inputBlur('user',formName.user)"></el-input>
+                    <p>{{formName.userError}}</p>
+                </el-form-item>
+                <el-form-item label="密码">
+                    <el-input type="password" id="password" v-model="formName.password"
+                              @blur="inputBlur('password',formName.password)"></el-input>
+                    <p>{{formName.passwordError}}</p>
+                </el-form-item>
+                <el-button type="primary" @click="submitForm('formName')" v-bind:disabled="formName.beDisabled">提交
+                </el-button>
+                <el-button @click="resetForm">重置</el-button>
+            </el-form>
         </div>
     </div>
 </div>
-
-
-
-
-<!-- 全局js -->
-<script src="${ctx!}/assets/js/jquery.min.js?v=2.1.4"></script>
-<script src="${ctx!}/assets/js/bootstrap.min.js?v=3.3.6"></script>
-
-<!-- 自定义js -->
-<script src="${ctx!}/assets/js/content.js?v=1.0.0"></script>
-
-<!-- jQuery Validation plugin javascript-->
-<script src="${ctx!}/assets/js/plugins/validate/jquery.validate.min.js"></script>
-<script src="${ctx!}/assets/js/plugins/validate/messages_zh.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        // 在键盘按下并释放及提交后验证提交表单
-        $("#frm").validate({
-            rules: {
-                usercode: {
-                    required: true,
-                    minlength: 2
-                },
-                password: {
-                    required: true,
-                    minlength: 5
-                }
-            },
-            messages: {
-                usercode: {
-                    required: "请输入用户码",
-                    minlength: "用户名必需由两个字符组成"
-                },
-                password: {
-                    required: "请输入密码",
-                    minlength: "密码长度不能小于6个字符"
-                }
-            },
-            submitHandler:function(form){
-               form.submit();
-            }
-        });
-    });
-    $("#closeRegist").click(function(){
-        $("#userName").val("");
-        $("#nickName").val("");
-        $("#telephone").val("");
-    });
-  
-</script>
 </body>
 
+
+<script type="text/javascript">
+
+    var app = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                formName: {//表单中的参数
+                    user: '',
+                    userError: '',
+                    password: '',
+                    passwordError: '',
+                    beDisabled: true
+                },
+                beShow: false//传值给父组件
+            }
+        },
+        methods: {
+            resetForm: function () {
+                this.formName.user = '';
+                this.formName.userError = '';
+                this.formName.password = '';
+                this.formName.passwordError = '';
+            },
+            submitForm: function (formName) {
+                //与父组件通信传值
+                //this.$emit('showState', [this.beShow,this.formName.user])
+                //提交user password
+                var user = this.formName.user,
+                        password = this.formName.password;
+                console.log(user, password)
+                axios.post('./login?username=' + user + '&pwd=' + password)
+                        .then(function (res) {
+                            console.log(res.data);
+                            if (res.status === 200 && res.data === 1) {
+                                console.log("登录成功");
+
+                                store.save()
+                            } else {
+                                console.log("密码错误");
+                                formName.passwordError = '用户名或密码错误';
+                            }
+
+                        })
+                        .catch(function () {
+
+                        })
+            },
+            inputBlur: function (errorItem, inputContent) {
+                if (errorItem === 'user') {
+                    if (inputContent === '') {
+                        this.formName.userError = '用户名不能为空'
+                    } else {
+                        this.formName.userError = '';
+                    }
+                } else if (errorItem === 'password') {
+                    if (inputContent === '') {
+                        this.formName.passwordError = '密码不能为空'
+                    } else {
+                        this.formName.passwordError = '';
+                    }
+                }
+                //对于按钮的状态进行修改
+                if (this.formName.user != '' && this.formName.password != '') {
+                    this.formName.beDisabled = false;
+                } else {
+                    this.formName.beDisabled = true;
+                }
+            }
+        },
+        beforeMount() {
+            // axios.get('/user', {
+            //     params: {
+            //         ID: 12345
+            //     }
+            // })
+            //     .then(function (response) {
+            //         console.log(response);
+            //     })
+            //     .catch(function (error) {
+            //         console.log(error);
+            //     });
+        }
+    });
+
+</script>
 </html>

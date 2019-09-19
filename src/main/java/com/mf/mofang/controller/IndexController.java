@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 @RequestMapping("")
-public class IndexControoler {
+public class IndexController {
 
 
     @RequestMapping(value = {"/", "/index"})

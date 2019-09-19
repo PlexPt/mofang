@@ -25,6 +25,8 @@ public class UserModel {
      */
     private String username;
 
+    private String password;
+
     // 以下备用
     private String status;
     private String remark;
