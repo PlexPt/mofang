@@ -50,7 +50,7 @@ public class AdminController {
                 return map;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             map.put("code", 0);
 
             return map;

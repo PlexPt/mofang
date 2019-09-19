@@ -85,7 +85,6 @@
 
 
 <script type="text/javascript">
-
     var app = new Vue({
         el: '#app',
         data: function () {
@@ -117,13 +116,22 @@
                 axios.post('./login?username=' + user + '&pwd=' + password)
                         .then(function (res) {
                             console.log(res.data);
-                            if (res.status === 200 && res.data === 1) {
+                            if (res.status === 200 && res.data.code === 1) {
                                 console.log("登录成功");
 
-                                store.save()
+                                 save(res.data.token);
                             } else {
-                                console.log("密码错误");
-                                formName.passwordError = '用户名或密码错误';
+
+                                // ele.MessageBox({
+                                //     title: 'e',
+                                //     message: ' 密码错误' ,
+                                //     type: ' error '
+                                // });
+                                ele.ElementUI.Message({
+                                    message: ' 恭喜你，这是一条成功消息',
+                                    type: ' success '
+                                });
+                                alert("用户名或密码错误");
                             }
 
                         })
@@ -154,6 +162,7 @@
             }
         },
         beforeMount() {
+           get()
             // axios.get('/user', {
             //     params: {
             //         ID: 12345
@@ -167,6 +176,9 @@
             //     });
         }
     });
+
+
+
 
 </script>
 </html>
