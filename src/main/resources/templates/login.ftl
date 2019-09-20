@@ -8,15 +8,15 @@
     <!-- 开发环境版本，包含了有帮助的命令行警告 2.6.10-->
     <script src="/js/vue.js"></script>
     <script src="/js/axios.js"></script>
-    <script src="/js/store.js"></script>
+        <script src="/js/store.js"></script>
 
     <!-- element引入样式 -->
     <link rel="stylesheet" href="/css/element-ui.css">
     <!-- element引入组件库 -->
     <script src="/js/ele.js"></script>
-<#--    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
-<#--对于生产环境，我们推荐链接到一个明确的版本号和构建文件，以避免新版本造成的不可预期的破坏-->
-<#--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>-->
+    <#--    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
+    <#--对于生产环境，我们推荐链接到一个明确的版本号和构建文件，以避免新版本造成的不可预期的破坏-->
+    <#--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>-->
 
     <style>
         html, body {
@@ -33,15 +33,29 @@
             height: 100%;
 
             background: rgba(0, 0, 0, .8);
+
+
         }
 
         .loginPage {
+            /*position: absolute;*/
+            /*top: 50%;*/
+            /*left: 50%;*/
+            /*margin-top: -150px;*/
+            /*margin-left: -175px;*/
+            /*width: 350px;*/
+            /*min-height: 300px;*/
+            /*padding: 30px 20px 20px;*/
+            /*border-radius: 8px;*/
+            /*box-sizing: border-box;*/
+            /*background-color: #fff;*/
+
+
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 40%;
+            left: 25%;
             margin-top: -150px;
-            margin-left: -175px;
-            width: 350px;
+            width: 50%;
             min-height: 300px;
             padding: 30px 20px 20px;
             border-radius: 8px;
@@ -52,6 +66,11 @@
         .loginPage p {
             color: red;
             text-align: left;
+        }
+
+        .loginPage h1 {
+            color: #233333;
+            text-align: center;
         }
 
     </style>
@@ -66,17 +85,18 @@
             <el-form>
                 <el-form-item label="用户名">
                     <el-input type="text" id="user" v-model="formName.user"
-                              @blur="inputBlur('user',formName.user)"></el-input>
+                              @input="inputBlur('user',formName.user)"></el-input>
                     <p>{{formName.userError}}</p>
                 </el-form-item>
                 <el-form-item label="密码">
                     <el-input type="password" id="password" v-model="formName.password"
-                              @blur="inputBlur('password',formName.password)"></el-input>
+                              @input="inputBlur('password',formName.password)"></el-input>
                     <p>{{formName.passwordError}}</p>
                 </el-form-item>
-                <el-button type="primary" @click="submitForm('formName')" v-bind:disabled="formName.beDisabled">提交
+                <el-button style="width:100%;" type="primary" @click="submitForm('formName')"
+                           v-bind:disabled="formName.beDisabled">登录
                 </el-button>
-                <el-button @click="resetForm">重置</el-button>
+                <#--                <el-button style="width:40%;" @click="resetForm">重置</el-button>-->
             </el-form>
         </div>
     </div>
@@ -100,44 +120,46 @@
             }
         },
         methods: {
-            resetForm: function () {
-                this.formName.user = '';
-                this.formName.userError = '';
-                this.formName.password = '';
-                this.formName.passwordError = '';
-            },
+            // resetForm: function () {
+            //     this.formName.user = '';
+            //     this.formName.userError = '';
+            //     this.formName.password = '';
+            //     this.formName.passwordError = '';
+            // },
             submitForm: function (formName) {
                 //与父组件通信传值
                 //this.$emit('showState', [this.beShow,this.formName.user])
                 //提交user password
                 var user = this.formName.user,
-                        password = this.formName.password;
+                    password = this.formName.password;
+                var that = this;
                 console.log(user, password)
                 axios.post('./login?username=' + user + '&pwd=' + password)
-                        .then(function (res) {
-                            console.log(res.data);
-                            if (res.status === 200 && res.data.code === 1) {
-                                console.log("登录成功");
+                    .then(function (res) {
+                        console.log(res.data);
+                        if (res.status === 200 && res.data.code === 1) {
+                            console.log("登录成功");
 
-                                 save(res.data.token);
-                            } else {
+                            save(res.data.token);
+                        } else {
 
-                                // ele.MessageBox({
-                                //     title: 'e',
-                                //     message: ' 密码错误' ,
-                                //     type: ' error '
-                                // });
-                                ele.ElementUI.Message({
-                                    message: ' 恭喜你，这是一条成功消息',
-                                    type: ' success '
-                                });
-                                alert("用户名或密码错误");
-                            }
+                            // ele.MessageBox({
+                            //     title: 'e',
+                            //     message: ' 密码错误' ,
+                            //     type: ' error '
+                            // });
+                            // this.$ElementUI.Message({
+                            //     message: '用户名或密码错误',
+                            //     type: 'error'
+                            // });
+                            that.$message.error('用户名或密码错误');
+                            // alert("用户名或密码错误");
+                        }
 
-                        })
-                        .catch(function () {
+                    })
+                    .catch(function () {
 
-                        })
+                    })
             },
             inputBlur: function (errorItem, inputContent) {
                 if (errorItem === 'user') {
@@ -162,7 +184,11 @@
             }
         },
         beforeMount() {
-           get()
+            // var store = require("/js/store.js")
+            // var token = store.get();
+            var str = gettoken();
+            debugger;
+
             // axios.get('/user', {
             //     params: {
             //         ID: 12345
@@ -176,8 +202,6 @@
             //     });
         }
     });
-
-
 
 
 </script>
