@@ -6,6 +6,7 @@ import com.mf.mofang.dao.UserDao;
 import com.mf.mofang.model.UserModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,7 @@ public class AdminController {
 
     @PostMapping("login")
     @ResponseBody
+    @Cacheable
     public Map<String, Object> post(@RequestParam String username,
                                     @RequestParam String pwd) {
 
