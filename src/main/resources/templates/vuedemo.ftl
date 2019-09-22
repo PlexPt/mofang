@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>vue</title>
+    <title>后台管理</title>
 
 
     <!-- 开发环境版本，包含了有帮助的命令行警告 2.6.10-->

@@ -30,7 +30,7 @@ public class AdminController {
     @GetMapping("login")
     public String login() {
 
-        return "login";
+        return "admin/login";
     }
 
     @PostMapping("login")
@@ -63,11 +63,19 @@ public class AdminController {
     }
 
 
-
-    @Login
-    @GetMapping("index")
+//    @Login
+    @GetMapping({"index", ""})
     public String index() {
 
-        return "index";
+        return "admin/index";
     }
+
+//    @Login
+    @GetMapping("userlist")
+    public String user() {
+
+        return "admin/userlist";
+    }
+
+
 }

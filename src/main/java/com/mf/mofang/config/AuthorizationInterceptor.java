@@ -48,7 +48,7 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
                 || (JwtUtil.getClaimByToken(token)) == null
                 || JwtUtil.getClaimByToken(token).getSubject() == null) {
 
-            Template t = configuration.getTemplate("login.ftl");
+            Template t = configuration.getTemplate("admin/login.ftl");
             response.setContentType("text/html; charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
             Writer out = response.getWriter();
