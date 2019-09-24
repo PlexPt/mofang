@@ -19,8 +19,8 @@
 
 </head>
 <body>
-<div id="app" style="padding: 0; margin: 0; ">
-    <el-container style="height: 100%;min-height: 1080px;  padding: 0; margin: 0 ;  ">
+<div id="app" style="height: 100%; padding: 0; margin: 0; ">
+    <el-container style="height: 100%;   padding: 0; margin: 0 ;  ">
 
         <el-header style="background:#409EFF;">
             <nav style="margin: 0; text-align: center">
@@ -32,8 +32,8 @@
                 <el-menu
                         background-color="#304156"
                         text-color="#fff"
-                        :collapse="sidebarFold"
-                        :collapseTransition="false"
+<#--                        :collapse="sidebarFold"-->
+<#--                        :collapseTransition="false"-->
                 >
 
 
@@ -68,7 +68,7 @@
             </el-aside>
 
 
-            <el-main>
+            <el-main id="test">
 
                 <div>
                     <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
@@ -86,14 +86,16 @@
                             style="width: 100%;"
                     >
 
-                        <el-table-column prop="userId" header-align="center" align="center" width="80"
+                        <el-table-column prop="userId" header-align="center" align="center"
+                                         width="80"
                                          label="ID"></el-table-column>
                         <el-table-column prop="name" header-align="center" align="center"
                                          label="姓名"></el-table-column>
                         <el-table-column prop="username" header-align="center" align="center"
                                          label="用户名"></el-table-column>
 
-                        <el-table-column fixed="right" header-align="center" align="center" width="150" label="操作">
+                        <el-table-column fixed="right" header-align="center" align="center"
+                                         width="150" label="操作">
                             <template slot-scope="scope">
                                 <el-button
                                         type="text"
@@ -118,8 +120,9 @@
                             @refreshDataList="getDataList"
                             :title="!dataForm.id ? '新增' : '修改'"
                             :close-on-click-modal="false"
-                            :visible.sync="visible">
-                        <el-form :model="dataForm" :rules="dataRule" ref="dataForm"
+<#--                            :visible.sync="visible"-->
+                    >
+                        <el-form :model="dataForm"     ref="dataForm"
                                  @keyup.enter.native="dataFormSubmit()" label-width="80px">
                             <el-form-item label="姓名" prop="userName">
                                 <el-input v-model="dataForm.name" placeholder="姓名"></el-input>
@@ -127,10 +130,13 @@
                             <el-form-item label="登录帐号" prop="username">
                                 <el-input v-model="dataForm.username" placeholder="登录帐号"></el-input>
                             </el-form-item>
-                            <el-form-item label="密码" prop="password" :class="{ 'is-required': !dataForm.id }">
-                                <el-input v-model="dataForm.password" type="password" placeholder="密码"></el-input>
+                            <el-form-item label="密码" prop="password"
+                                          :class="{ 'is-required': !dataForm.id }">
+                                <el-input v-model="dataForm.password" type="password"
+                                          placeholder="密码"></el-input>
                             </el-form-item>
-                            <el-form-item label="确认密码" prop="comfirmPassword" :class="{ 'is-required': !dataForm.id }">
+                            <el-form-item label="确认密码" prop="comfirmPassword"
+                                          :class="{ 'is-required': !dataForm.id }">
                                 <el-input v-model="dataForm.comfirmPassword" type="password"
                                           placeholder="确认密码"></el-input>
                             </el-form-item>
@@ -154,10 +160,16 @@
 
 
 <script type="text/javascript">
+    (function () {
 
+        var heights = window.innerHeight;
+        document.getElementById("test").style.height = parseInt(heights - 60 - 20) + "px";
+    })();
     var app = new Vue({
         el: '#app',
         data: function () {
+
+
             return {
                 dataForm: {
                     id: 0,
@@ -167,12 +179,14 @@
                     comfirmPassword: '',
                     status: 1
                 },
-                dataList: [{
+                dataList: Array(200).fill({
                     id: '1',
                     name: '罗艺',
                     username: '13563746574',
 
-                }],
+                })
+
+                ,
                 dataListLoading: false,
                 addOrUpdateVisible: false
             };
@@ -185,7 +199,7 @@
             getDataList: function () {
                 this.dataListLoading = true;
                 axios.request({
-                    url:  "/sys/user/list" ,
+                    url: "/sys/user/list",
                     method: "get"
 
                 }).then(({data}) => {
@@ -211,7 +225,7 @@
             addOrUpdateHandle: function (id) {
                 this.addOrUpdateVisible = true;
                 this.$nextTick(() => {
-                  //  this.init(id);
+                    //  this.init(id);
                 });
             },
             init: function (id) {
@@ -230,7 +244,7 @@
                 }).then(() => {
                     if (this.dataForm.id) {
                         axios.request({
-                            url:  (`/sys/user/info/` + this.dataForm.id),
+                            url: (`/sys/user/info/` + this.dataForm.id),
                             method: 'get',
                         }).then(({data}) => {
                             if (data && data.code === 0) {
@@ -249,35 +263,35 @@
             deleteHandle: function (id) {
                 var userIds = id;
                 this.$confirm(
-                        `确定删除?`,
-                        "提示",
-                        {
-                            confirmButtonText: "确定",
-                            cancelButtonText: "取消",
-                            type: "warning"
-                        })
-                        .then(() => {
-                            axios.request({
-                                url:  ("/user/delete/" + userIds),
-                                method: "post",
+                    `确定删除?`,
+                    "提示",
+                    {
+                        confirmButtonText: "确定",
+                        cancelButtonText: "取消",
+                        type: "warning"
+                    })
+                    .then(() => {
+                        axios.request({
+                            url: ("/user/delete/" + userIds),
+                            method: "post",
 
-                            }).then(({data}) => {
-                                if (data && data.code === 0) {
-                                    this.$message({
-                                        message: "操作成功",
-                                        type: "success",
-                                        duration: 1500,
-                                        onClose: () => {
-                                            this.getDataList();
-                                        }
-                                    });
-                                } else {
-                                    this.$message.error(data.msg);
-                                }
-                            });
-                        })
-                        .catch(() => {
+                        }).then(({data}) => {
+                            if (data && data.code === 0) {
+                                this.$message({
+                                    message: "操作成功",
+                                    type: "success",
+                                    duration: 1500,
+                                    onClose: () => {
+                                        this.getDataList();
+                                    }
+                                });
+                            } else {
+                                this.$message.error(data.msg);
+                            }
                         });
+                    })
+                    .catch(() => {
+                    });
             }
             ,
             onSubmit: function () {
@@ -298,7 +312,7 @@
 
     body {
         margin: 0;
-        min-height: 1080px%;
+        height: 100%;
     }
 
     .el-menu-item {
