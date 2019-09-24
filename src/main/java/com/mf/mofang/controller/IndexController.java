@@ -28,6 +28,17 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping(value = {"/box"})
+    public String box() {
+        return "box";
+    }
+
+    @RequestMapping(value = {"/space"})
+    public String space() {
+
+        return "space";
+    }
+
     @PostMapping("contact")
     @ResponseBody
     public String contact(FeedbackModel model) {

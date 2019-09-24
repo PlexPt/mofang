@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.banner {
+    height: 88vh;
+    width: 100%;
+    background: #e5e5e5;
+}
+
+.bignav {
+    width: 100%;
+    background: #fff;
+    border-bottom: 2px solid #D0A680;
+    display: flex;
+    justify-content: space-between;
+    padding: 1vh 8vw;
+}
+
+.nav {
+    height: 10vh;
+}
+
+.nav a {
+    display: block;
+    width: 200px;
+    float: left;
+    color: #666;
+    text-decoration: none;
+    text-align: center;
+    line-height: 10vh;
+    font-size: 2vw;
+}
+.nav a:hover{
+    color: #D0A680;
+}
+.nav a.active{
+    color: #D0A680;
+}
