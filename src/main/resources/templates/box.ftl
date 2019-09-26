@@ -238,22 +238,31 @@
             <div class="mofangkuai_nav_con">
                 <ul class="chuangyi_ul">
                     <li>
-                        <img src="../images/img2.jpg" alt="">
-                        <p>双流普锐斯新蒙国际幼儿园</p>
+                        <div>
+                            <img src="../images/img2.jpg" alt="">
+                            <p>双流普锐斯新蒙国际幼儿园</p>
+                        </div>
                     </li>
                     <li>
-                        <img src="../images/img2.jpg" alt="">
-                        <p>四叶草国际幼儿园</p>
+                        <div>
+                            <img src="../images/img2.jpg" alt="">
+                            <p>双流普锐斯新蒙国际幼儿园</p>
+                        </div>
                     </li>
                 </ul>
                 <ul class="chuangyi_ul">
                     <li>
-                        <img src="../images/img2.jpg" alt="">
-                        <p>双流普锐斯新蒙国际幼儿园</p>
+                        <div>
+                            <img src="../images/img2.jpg" alt="">
+                            <p>双流普锐斯新蒙国际幼儿园</p>
+                        </div>
+
                     </li>
                     <li>
-                        <img src="../images/img2.jpg" alt="">
-                        <p>四叶草国际幼儿园</p>
+                        <div>
+                            <img src="../images/img2.jpg" alt="">
+                            <p>四叶草国际幼儿园</p>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -317,6 +326,10 @@
     $(function () {
 
         $(".lubo").lubo({});
+
+        $(".chuangyi_ul>li").on("click",function () {
+            location.href = "/detail/1"
+        })
 
     })
 

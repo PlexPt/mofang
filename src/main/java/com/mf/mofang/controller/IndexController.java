@@ -5,6 +5,7 @@ import com.mf.mofang.model.FeedbackModel;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -38,6 +39,15 @@ public class IndexController {
 
         return "space";
     }
+
+    @RequestMapping(value = {"/detail/{id}"})
+    public String detail(@PathVariable("id") String id) {
+
+
+
+        return "detail";
+    }
+
 
     @PostMapping("contact")
     @ResponseBody
