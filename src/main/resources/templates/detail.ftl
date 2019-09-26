@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
     <title>设计详情</title>
     <link rel="stylesheet" href="../css/iconfont/iconfont.css">
     <link rel="stylesheet" href="../css/scroll.css">
@@ -31,29 +37,7 @@
     </div>
 </section>
 <div id="content">
-    <section
-            style="box-sizing: border-box !important; margin: 0px; padding: 0px; overflow-wrap: break-word !important; user-select: text !important; display: flex; font-size: 16px;  max-width: 100%; color: rgb(33, 37, 41); font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, 微软雅黑, Arial, sans-serif;      text-align: left;       background-color: rgb(255, 255, 255);   justify-content: center; align-items: center;">
-        <section
-                style="box-sizing: border-box !important; margin: 8px 0px 0px; padding: 0px; overflow-wrap: break-word !important; user-select: text !important; display: block; font-size: inherit;  max-width: 100%; width: 50px;">
-            <img class="assistant"
-                 src="http://image2.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvN1FSVHZrSzJxQzV4akR2cmliOEdUVVE2cmFjcUlLYTJrZkJFZGJZNFd3bmFzaWJJTWFhZEc1OUZibFV3Q1lGekFNcE84ckRDaWE4cTlnMnA5cHB6aWFWdDR3LzA/d3hfZm10PXBuZw=="
-                 data-ratio="1"
-                 style="box-sizing: border-box !important; margin: 0px; padding: 0px; overflow-wrap: break-word !important; user-select: text !important; vertical-align: baseline; border-style: none; max-width: 100%; font-size: inherit;  width: 50px; display: block;"/>
-        </section>
-    </section>
-    <section
-            style="box-sizing: border-box !important; margin: 0px; padding: 0px; overflow-wrap: break-word !important; user-select: text !important; display: block; font-size: 16px;  max-width: 100%; color: rgb(33, 37, 41); font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, 微软雅黑, Arial, sans-serif;      text-align: left;         width: 348px; background: rgb(255, 247, 238);">
-        <section data-autoskip="1" class="135brush"
-                 style="box-sizing: border-box !important; margin: 0px; padding: 1em; overflow-wrap: break-word !important; user-select: text !important; display: block; font-size: 14px;  max-width: 100%; text-align: justify; letter-spacing: 1.5px; line-height: 1.75em; color: rgb(212, 10, 17);">
-            <p style="box-sizing: border-box !important; margin: 0px; padding: 0px; overflow-wrap: break-word !important; user-select: text !important; clear: both; font-size: inherit;  max-width: 100%; line-height: inherit;">
-                据中宣部常务副部长王晓晖29日介绍，10月1日，将在 北京天安门广场隆重举行庆祝中华人民共和国成立70周 年大会，中共中央总书记、国家主席、中央军委主席习 近平发表重要讲话，庆祝大会后将举行盛大的阅兵式和
-                群众游行。
-            </p>
-        </section>
-    </section>
-    <p>
-        <br/>
-    </p>
+    ${content}
 </div>
 
 <section class="footer" id="foot">
