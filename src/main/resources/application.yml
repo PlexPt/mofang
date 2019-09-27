@@ -15,19 +15,27 @@ spring:
       time_format: HH:mm:ss
       datetime_format: yyyy-MM-dd HH:mm:ss
     request-context-attribute: request
+
+
+#nginx文件上传根目录
+wwwroot: /app/
+
+#nginx文件上传域名
+domain: "http://img.sczhmf.com"
+
   #全是默认值
-#    # 设置模板后缀名
-#    suffix: .ftl
-#
-#    # 设置文档类型
-#    content-type: text/html
-#    # 设置页面编码格式
-#    charset: UTF-8
-#    # 设置页面缓存
-#    cache: false
+  #    # 设置模板后缀名
+  #    suffix: .ftl
+  #
+  #    # 设置文档类型
+  #    content-type: text/html
+  #    # 设置页面编码格式
+  #    charset: UTF-8
+  #    # 设置页面缓存
+  #    cache: false
 #    # 设置ftl文件路径
 #    template-loader-path: classpath:/templates/
 
-  #设定静态文件路径，js,css等
+#设定静态文件路径，js,css等
 #  resources:
 #     static-locations: classpath:/templates/,classpath:/static/

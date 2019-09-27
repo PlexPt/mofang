@@ -19,7 +19,7 @@ public class MofangApplication {
         String currentpath = System.getProperty("user.dir");
         String absolutePath = new File("").getAbsolutePath();
 
-        if (!currentpath.contains("bin")) {
+        if (!currentpath.contains("java")) {
             System.out.println("路径配置不正确,将使用默认");
         } else {
             String b = currentpath.substring(0, currentpath.indexOf("bin")) + "www\\file\\";
