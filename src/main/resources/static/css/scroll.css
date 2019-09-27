@@ -24,7 +24,7 @@ body {
 
 .nav a {
     display: block;
-    width: 200px;
+    width: 10vw;
     float: left;
     color: #666;
     text-decoration: none;

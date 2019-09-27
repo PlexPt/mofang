@@ -31,7 +31,7 @@ a{
     display: none;
 }
 .left_logo{
-    width: 14vw;
+    width: 17vw;
     height: 10vh;
 }
 .about_title{
@@ -70,9 +70,9 @@ a{
     text-indent: 2em;
 }
 .info_main_title{
-     color: #D0A680;
+    color: #D0A680;
     font-size: 1.5vw;
- }
+}
 .info_sub1_title{
     color: #999;
     font-size: 1.1vw;
@@ -270,36 +270,40 @@ a{
 .chuangyi_ul{
     display: flex;
     justify-content: space-between;
-    width: 80vw;
+    width: 84vw;
     margin: 0 auto;
     padding: 2.5vh 0;
 }
 .chuangyi_ul>li{
-    width: 38vw;
-    position: relative;
+    width: 42vw;
+    height: 52vh;
+    /*position: relative;*/
     cursor: pointer;
-    transition: all linear .8s;
+    /*transition: all linear .8s;*/
+    overflow: hidden;
 }
-.chuangyi_ul>li>p{
-    font-size: .8vw;
-    color: #fff;
-    height: 5vh;
-    line-height: 5vh;
+.chuangyi_ul>li>div{
+    position: relative;
+    top: 0;
+    transition: all .1s linear .2s;
+}
+.chuangyi_ul>li>div>img{
+    display: inline-block;
+    width: 40vw;
+    height: 52vh;
+}
+.chuangyi_ul>li>div>p{
+    font-size: 1vw;
+    color: #333;
+    height: 4vh;
+    line-height: 4vh;
     text-align: center;
-    position: absolute;
     width: 100%;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background-color: rgba(0,0,0,.5);
-    display:none;
+    background-color: #fff;
 }
-.chuangyi_ul>li:hover{
-    top: -2vh;
-    width: 38.5vw;
-}
-.chuangyi_ul>li:hover p{
-    display: block;
+.chuangyi_ul>li:hover div{
+    top: -4vh;
+
 }
 .three_inputs{
     display: flex;
