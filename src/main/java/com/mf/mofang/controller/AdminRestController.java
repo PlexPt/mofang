@@ -118,7 +118,9 @@ public class AdminRestController {
         }
     }
 
-
+    /**
+     * 客户留言list
+     */
     @GetMapping("feedback/list")
     public R feedbacklist() {
 
@@ -133,6 +135,9 @@ public class AdminRestController {
         }
     }
 
+    /**
+     * 客户留言
+     */
     @PostMapping("feedback/add")
     public R feedbackadd(@RequestBody FeedbackModel feedbackModel) {
         try {
