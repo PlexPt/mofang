@@ -32,18 +32,21 @@ import lombok.extern.slf4j.Slf4j;
 public class UploadController {
 
     @Value("${wwwroot}")
-    String wwwroot = "/app/";
+    String wwwroot = "/app/www/";
 
     @Value("${domain}")
-    String domain = "/app/";
+    String domain = "http://img.sczhmf.com";
 
     /**
      * 上传
      */
     @PostMapping("/file")
     public Map<String, Object> upload(@RequestParam("file") MultipartFile file) throws Exception {
+        if (file.isEmpty()) {
+            throw new Exception("上传文件不能为空");
+        }
 
-        String url = save(file, wwwroot + "file/");
+        String url = save(file);
 
         Map<String, Object> map = new HashMap<>();
         map.put("code", 0);
@@ -53,10 +56,7 @@ public class UploadController {
     }
 
 
-    public String save(MultipartFile file, String path) throws Exception {
-        if (file.isEmpty()) {
-            throw new Exception("上传文件不能为空");
-        }
+    public String save(MultipartFile file) {
 
         //上传的文件
         //后缀
@@ -70,10 +70,10 @@ public class UploadController {
         String name = time + "-" + uuid + suffix;
 
         // 文件上传的路径
-        String filePath = path;
+        String filePath = wwwroot + "file/";
 
         //当前jar路径
-        String currentpath = System.getProperty("user.dir");
+//        String currentpath = System.getProperty("user.dir");
 
         log.info("保存文件到 " + filePath);
 
@@ -99,7 +99,7 @@ public class UploadController {
             throw new RuntimeException(e.getMessage());
         }
 
-        String url = domain + "/" + path + name;
+        String url = domain + "/file/"  + name;
 
         return url;
     }

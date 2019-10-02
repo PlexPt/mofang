@@ -4,7 +4,8 @@ server:
 spring:
   datasource:
     #    url: jdbc:sqlite::resource:db/mofang.db
-    url: jdbc:sqlite:db/mofang.db  #项目根目录下的db
+    url: jdbc:sqlite:db/mofang.db  #项目目录下的db
+#    url: jdbc:sqlite:/app/mofang.db  #服务器目录下的db
     driver-class-name: org.sqlite.JDBC
     username:
     password:
@@ -18,10 +19,10 @@ spring:
 
 
 #nginx文件上传根目录
-wwwroot: /app/
+wwwroot: /app/www/
 
 #nginx文件上传域名
-domain: "http://img.sczhmf.com"
+domain: http://img.sczhmf.com
 
   #全是默认值
   #    # 设置模板后缀名
