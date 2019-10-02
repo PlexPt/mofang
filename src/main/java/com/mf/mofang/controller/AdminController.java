@@ -56,7 +56,7 @@ public class AdminController {
                 return map;
             }
         } catch (Exception e) {
-//            e.printStackTrace();
+            e.printStackTrace();
             map.put("code", 0);
 
             return map;
@@ -67,18 +67,64 @@ public class AdminController {
     }
 
 
+    /**
+     * 留言管理 首页
+     *
+     * @return
+     */
     //    @Login
-    @GetMapping({"index", ""})
+    @GetMapping({"index"})
     public String index() {
 
         return "admin/index";
     }
 
+    /**
+     * 用户管理
+     *
+     * @return
+     */
     //    @Login
     @GetMapping("userlist")
     public String user() {
 
         return "admin/userlist";
+    }
+
+    /**
+     * 案例
+     *
+     * @return
+     */
+    //    @Login
+    @GetMapping("show")
+    public String show() {
+
+        return "admin/show";
+    }
+
+    /**
+     * 轮播
+     *
+     * @return
+     */
+    //    @Login
+    @GetMapping("banner")
+    public String banner() {
+
+        return "admin/banner";
+    }
+
+    /**
+     * about
+     *
+     * @return
+     */
+    //    @Login
+    @GetMapping("about")
+    public String about() {
+
+        return "admin/about";
     }
 
 

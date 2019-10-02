@@ -141,6 +141,8 @@
                             console.log("登录成功");
 
                             save(res.data.token);
+
+                            location.href = "./index";
                         } else {
 
                             // ele.MessageBox({
