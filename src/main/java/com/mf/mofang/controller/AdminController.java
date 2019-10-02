@@ -3,20 +3,13 @@ package com.mf.mofang.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.mf.mofang.dao.UserDao;
 import com.mf.mofang.model.UserModel;
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * 后台
@@ -35,35 +28,6 @@ public class AdminController {
     public String login() {
 
         return "admin/login";
-    }
-
-    @PostMapping("login")
-    @ResponseBody
-    @Cacheable
-    public Map<String, Object> post(@RequestParam String username,
-                                    @RequestParam String pwd) {
-
-        Map<String, Object> map = new HashMap<>(4);
-        try {
-            UserModel userModel = userDao.selectOne(new QueryWrapper<UserModel>()
-                    .lambda()
-                    .eq(UserModel::getUsername, username)
-            );
-
-            if (pwd.equals(userModel.getPassword())) {
-                map.put("token", "");
-                map.put("code", 1);
-                return map;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            map.put("code", 0);
-
-            return map;
-        }
-        map.put("code", 0);
-
-        return map;
     }
 
 
