@@ -5,7 +5,6 @@ package com.mf.mofang.config;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
-import io.jsonwebtoken.Claims;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -137,10 +137,12 @@
                 axios.post('./login?username=' + user + '&pwd=' + password)
                     .then(function (res) {
                         console.log(res.data);
-                        if (res.status === 200 && res.data.code === 1) {
+                        if (res.status === 200 && res.data.code === 0) {
                             console.log("登录成功");
 
                             save(res.data.token);
+
+                            location.href = "./index";
                         } else {
 
                             // ele.MessageBox({

@@ -31,7 +31,7 @@ a{
     display: none;
 }
 .left_logo{
-    width: 17vw;
+    width: 14vw;
     height: 10vh;
 }
 .about_title{
@@ -102,7 +102,7 @@ a{
     height: 100%;
 }
 .footer{
-    height: 22vh;
+    height: 17vh;
     background-color: #666;
     color: #c2c2c2;
     font-size: .8vw;
@@ -272,7 +272,7 @@ a{
     justify-content: space-between;
     width: 84vw;
     margin: 0 auto;
-    padding: 2.5vh 0;
+    padding: 1.5vh 0;
 }
 .chuangyi_ul>li{
     width: 42vw;
@@ -289,7 +289,7 @@ a{
 }
 .chuangyi_ul>li>div>img{
     display: inline-block;
-    width: 40vw;
+    width: 41vw;
     height: 52vh;
 }
 .chuangyi_ul>li>div>p{
@@ -297,7 +297,7 @@ a{
     color: #333;
     height: 4vh;
     line-height: 4vh;
-    text-align: center;
+    text-align: left;
     width: 100%;
     background-color: #fff;
 }
