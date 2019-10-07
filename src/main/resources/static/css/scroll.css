@@ -4,33 +4,35 @@ body {
 }
 
 .banner {
-    height: 88vh;
+    height: 565px;
     width: 100%;
     background: #e5e5e5;
 }
 
 .bignav {
     width: 100%;
+    min-width: 1000px;
     background: #fff;
     border-bottom: 2px solid #D0A680;
     display: flex;
     justify-content: space-between;
-    padding: 1vh 5vw;
+    padding: 5px 0px;
 }
 
 .nav {
-    height: 10vh;
+    height: 67px;
+    margin-right: 70px;
 }
 
 .nav a {
     display: block;
-    width: 10vw;
+    width: 150px;
     float: left;
     color: #666;
     text-decoration: none;
     text-align: center;
-    line-height: 10vh;
-    font-size: 2vw;
+    line-height: 100px;
+    font-size: 28px;
 }
 .nav a:hover{
     color: #D0A680;

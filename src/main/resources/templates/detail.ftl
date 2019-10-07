@@ -15,17 +15,7 @@
     <link rel="stylesheet" href="../css/mofangProject.css">
 </head>
 <body>
-<section class="banner">
-    <div class="lubo">
-        <ul class="lubo_box">
-            <li style=" opacity: 1;filter:alpha(opacity=100);"><a href="" style="background:url('../images/img1.jpg') center top no-repeat;background-size: 100% 100%"></a>
-            </li>
-            <li><a href="" style="background:url('../images/img2.jpg') no-repeat;background-size: 100% 100%"></a></li>
-            <li><a href="" style="background:url('../images/img3.jpg') no-repeat;background-size: 100% 100%"></a></li>
-            <li><a href="" style="background:url('../images/img4.jpg') no-repeat;background-size: 100% 100%"></a></li>
-        </ul>
-    </div>
-</section>
+<#include "head.ftl" />
 <section class="bignav" id="bignav">
     <div class="left_logo">
         <img src="../images/left_logo.jpg" alt="">
@@ -36,8 +26,10 @@
         <a href="/space">魔方空间</a>
     </div>
 </section>
-<div id="content">
-    ${content}
+<div id="content" class="detail-content">
+    <p class="detail-title"> ${showcaseModel.title}</p>
+
+    ${showcaseModel.content}
 </div>
 
 <section class="footer" id="foot">
@@ -91,11 +83,11 @@
 <script src="../js/scroll.js"></script>
 <script type="text/javascript">
 
-    $(function () {
-
-        $(".lubo").lubo({});
-
-    })
+    // $(function () {
+    //
+    //     $(".lubo").lubo({});
+    //
+    // })
 
 </script>
 </html>

@@ -43,7 +43,7 @@
 
 			Btn();
 
-		//根据图片的数量来生成圆点
+			//根据图片的数量来生成圆点
 
 			function cir(){
 
@@ -60,11 +60,11 @@
 
 				cir_box.css({
 
-					left:'50%',
+					right:'5%',
 
 					marginLeft:-cir_dss/2,
 
-					bottom:'10%' 
+					bottom:'5%'
 
 				});
 

@@ -2,7 +2,6 @@ package com.mf.mofang.model;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-
 import lombok.Data;
 
 /**
@@ -15,7 +14,7 @@ import lombok.Data;
 public class FeedbackModel {
 
     @TableId
-    Integer id;
+    Long id;
     /**
      * 名字
      */
